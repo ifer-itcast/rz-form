@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <el-card class="login-card">
-      <el-form :model="loginFormData" :rules="loginFormRules" style="margin-top: 50px;">
+      <el-form :model="loginFormData" :rules="loginFormRules" ref="loginForm" style="margin-top: 50px;">
         <el-form-item prop="mobile">
           <el-input v-model="loginFormData.mobile" placeholder="请输入您的手机号"></el-input>
         </el-form-item>
@@ -9,7 +9,7 @@
           <el-input v-model="loginFormData.password" placeholder="请输入您的密码"></el-input>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" style="width: 100%;">登录</el-button>
+          <el-button type="primary" style="width: 100%;" @click="login">登录</el-button>
         </el-form-item>
       </el-form>
     </el-card>
@@ -43,6 +43,13 @@ export default {
         ],
       },
     };
+  },
+  methods: {
+    async login() {
+      const r = await this.$refs.loginForm.validate().then(r => r).catch(e => e);
+      if(!r) return this.$message.error('校验失败')
+      this.$message.success('校验通过')
+    },
   },
 };
 </script>
