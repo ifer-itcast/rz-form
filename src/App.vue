@@ -1,28 +1,40 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <el-card class="login-card">
+      <el-form style="margin-top: 50px;">
+        <el-form-item>
+          <el-input placeholder="请输入您的手机号"></el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-input placeholder="请输入您的密码"></el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" style="width: 100%;">登录</el-button>
+        </el-form-item>
+      </el-form>
+    </el-card>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
-  }
 }
 </script>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  width: 100%;
+  height: 100vh;
+  background-color: pink;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login-card{
+  width: 440px;
+  height: 300px;
+  background-color: #fff;
 }
 </style>
