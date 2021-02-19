@@ -20,6 +20,9 @@
 export default {
   name: 'App',
   data() {
+    const checkMobile = (rule, value, callback) => {
+      value.charAt(2) === '9' ? callback() : callback(new Error('第三位必须是 9 ~~'));
+    };
     return {
       // 数据
       loginFormData: {
@@ -32,6 +35,7 @@ export default {
         mobile: [
           { required: true, message: '手机号不能为空', trigger: 'blur' },
           { pattern: /^1[3-9]\d{9}$/, message: '手机号格式不正确', trigger: 'blur' },
+          { validator: checkMobile, trigger: 'blur' },
         ],
         password: [
           { required: true, message: '密码不能为空', trigger: 'blur' },
